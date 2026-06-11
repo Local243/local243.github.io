@@ -24,6 +24,3 @@ Niagara College – Welland Campus, Room S206
 Welland, ON L3C 7L3  
 
 **Contact Us:** [local243@gmail.com](mailto:local243@gmail.com)
-
----
-*This site is built and hosted using [GitHub Pages](https://pages.github.com/). © OPSEU Local 243 – All Rights Reserved.*
