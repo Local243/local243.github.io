@@ -17,6 +17,37 @@ For the latest updates, executive committee contacts, and member resources, plea
 * **Leadership & Stewards:** Find contact information for Table Officers, Shop Stewards, and Governance representatives at both the Welland Campus (WC) and Daniel J. Patterson (DJP) Campus.
 * **Member Support:** Get help with your Collective Agreement, grievances, or workplace rights.
 
+## 🚀 Hosting & Deployment (CapRover)
+
+The site is plain HTML/CSS/JS served by nginx in a Docker container. CapRover builds it from the `captain-definition` + `Dockerfile` in this repo and handles HTTPS with Let's Encrypt.
+
+| File | Purpose |
+| --- | --- |
+| `captain-definition` | Tells CapRover to build with the `Dockerfile` |
+| `Dockerfile` | `nginx:1.28-alpine` image containing the site |
+| `deploy/nginx.conf` | Caching, gzip, `/healthz`, blocks dotfiles |
+| `deploy/security-headers.conf` | HSTS, CSP and other security headers |
+
+### First-time setup
+1. In the CapRover dashboard, **Apps → Create New App** (e.g. `local243`). No persistent data is needed.
+2. Deploy the code, either way:
+   - From this folder: `npx caprover deploy` (choose the app and the `main` branch), or
+   - **Deployment → Method 3: Deploy from GitHub** with a webhook so every push to `main` redeploys.
+3. **HTTP Settings**: add `opseu243.org` and `www.opseu243.org`, click **Enable HTTPS** for each, then turn on **Force HTTPS**.
+4. **DNS**: point the `A` record for `opseu243.org` (and `www`) at the CapRover server's IP, replacing the GitHub Pages records (`185.199.108–111.153`). Wait for DNS to update before enabling HTTPS in step 3.
+5. Once the new site is live on HTTPS, turn off GitHub Pages in the repo's **Settings → Pages** so the two hosts don't fight over the domain.
+
+### Test locally
+```bash
+docker build -t local243-site . && docker run --rm -p 8243:80 local243-site
+```
+Then open http://localhost:8243.
+
+### Making changes
+- **CSS/JS caching:** `style.css` and `site.js` are cached for 7 days. When you change either one, bump the `?v=` value where `index.html` links to it, so visitors get the new file.
+- **New third-party scripts or APIs** must be added to the `Content-Security-Policy` in `deploy/security-headers.conf`, or the browser will block them.
+- **Stewards & Officers:** each person is an `<li class="person">` in `index.html`. Set `data-unit` (`ft`/`pt`/`other`) and `data-campus` (`wc`/`djp`) so the filters work.
+
 ## 📍 Union Office Location
 **OPSEU Local 243**  
 Niagara College – Welland Campus, Room S206  

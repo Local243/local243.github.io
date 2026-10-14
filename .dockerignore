@@ -1,0 +1,9 @@
+.git
+.github
+.claude
+*.md
+CNAME
+Dockerfile
+captain-definition
+**/Thumbs.db
+**/.DS_Store
