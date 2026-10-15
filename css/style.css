@@ -273,7 +273,7 @@ ul {
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(11, 32, 61, 0.92);
+    background: rgba(0, 114, 206, 0.97);
     backdrop-filter: saturate(160%) blur(10px);
     -webkit-backdrop-filter: saturate(160%) blur(10px);
     color: #fff;
@@ -324,7 +324,7 @@ ul {
     display: block;
     padding: 0.5rem 0.9rem;
     border-radius: 999px;
-    color: rgba(255, 255, 255, 0.86);
+    color: #fff;
     font-weight: 550;
     text-decoration: none;
     transition: background-color 0.2s, color 0.2s;
@@ -333,18 +333,20 @@ ul {
 .nav-menu a:hover,
 .nav-menu a[aria-current="true"] {
     color: #fff;
-    background: rgba(255, 255, 255, 0.12);
+    background: var(--brand-strong);
 }
 
 .nav-menu .nav-cta {
     margin-left: var(--space-2);
-    background: var(--brand);
-    color: #fff;
+    background: #fff;
+    color: #005CA6;
+    font-weight: 650;
 }
 
 .nav-menu .nav-cta:hover,
 .nav-menu .nav-cta[aria-current="true"] {
-    background: var(--brand-strong);
+    background: #E5F1FB;
+    color: #005CA6;
 }
 
 .nav-toggle {
@@ -385,8 +387,8 @@ ul {
         align-items: stretch;
         gap: var(--space-1);
         padding: var(--space-3) var(--space-4) var(--space-4);
-        background: var(--navy);
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--brand);
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
         box-shadow: 0 16px 30px rgba(0, 0, 0, 0.3);
         opacity: 0;
         visibility: hidden;
