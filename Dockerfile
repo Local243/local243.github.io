@@ -10,5 +10,6 @@ COPY css /usr/share/nginx/html/css
 COPY js /usr/share/nginx/html/js
 COPY images /usr/share/nginx/html/images
 COPY data /usr/share/nginx/html/data
+COPY documents /usr/share/nginx/html/documents
 
 EXPOSE 80
